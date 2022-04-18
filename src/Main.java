@@ -1,8 +1,9 @@
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class Main {
-    public static void main(String[] args) {
+class Main {
+    public static void main(String[] args) throws IOException {
 
         int x;
         int y;
@@ -19,13 +20,15 @@ public class Main {
 
         if (calculation.length > 3)
         {
-            System.out.println("To many digits! You can input only 2!");
+            throw new IOException();
+            //System.out.println("To many digits! You can input only 2!");
         }
         else if (!Arrays.asList(romeDigits).contains(calculation[0]) && !Arrays.asList(romeDigits).contains(calculation[2]))
         {
                    if (Integer.valueOf(calculation[0]) < -10 || Integer.valueOf(calculation[0]) > 10 || Integer.valueOf(calculation[2]) < -10 || Integer.valueOf(calculation[2]) > 10)
                    {
-                       System.out.println("Some digits are too big! You can input only 10 or -10 max!");
+                       throw new IOException();
+                       //System.out.println("Some digits are too big! You can input only 10 or -10 max!");
                    }
                    else
                    {
@@ -57,7 +60,8 @@ public class Main {
                         break;
                     case "-":
                         if (x - y + 1 <= 0) {
-                            System.out.println("There are no null and negatives in Roman numbers. Try another numbers.");
+                            throw new IOException();
+                            //System.out.println("There are no null and negatives in Roman numbers. Try another numbers.");
                         } else {
                             System.out.println(romeDigits[x - y + 1]);
                         }
@@ -69,19 +73,22 @@ public class Main {
                         if ((x + 1) / (y + 1) - 1 > 0) {
                             System.out.println(romeDigits[(x + 1) / (y + 1) - 1]);
                         } else {
-                            System.out.println("You can't get a number < I in Roman numbers! Try another numbers.");
+                            throw new IOException();
+                           // System.out.println("You can't get a number < I in Roman numbers! Try another numbers.");
                         }
                         break;
                 }
            }
            else
            {
-             System.out.println("Some digits are too big! You can input only X max!");
+               throw new IOException();
+            // System.out.println("Some digits are too big! You can input only X max!");
            }
         }
         else
         {
-            System.out.println("Something went wrong! Try to chek your inputted math operation.");
+            throw new IOException();
+           // System.out.println("Something went wrong! Try to chek your inputted math operation.");
         }
     }
 }
